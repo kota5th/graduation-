@@ -1,26 +1,40 @@
-# 記事投稿python
+import sqlite3
+from flask import Flask, render_template, request,redirect
+app = Flask(__name__) 
 
 
+# 会員登録 
+@app.route("/regist",methods=["GET"])
+def regist_get():
+    return render_template("regist.html")
 
-@app.route("/●●●",methods=["GET"])
-def add_get():
-    return render_template("/●●●.html")
-# post通信はデーターを暗号化送信 情報の登録、送信に使う
-# 送信したときにDBnotaskリスト に追加されるようにつくるよー
-# add.htmlのvalue 送信ボタンが押されることで下記のルーティング発動
-@app.route("/●●●",methods=["POST"])
-def ●●●():
-    # request.form[パラメーター名(htmlの変数名)]代入する変数名は何でよい
-    # DBに接続する前にrequestする
-    # HTML.入力フォームから値を取得してAPP.PY変数に格納
-    ●●● = request.form["●●●"］
+@app.route("/regist",methods = ["POST"])
+def regist_post():
+    name = request.form.get("name")
+    password = request.form.get("password")
+
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
-    # DBにデータを追加したい場合はINSERT INTOやで
-    # (左値はID（AI）になるので最大値に＋１追加出来るNULL）
-    # (右側は書き込まれる内容がふめいなので？で対応)
-    # 変数名taskはタプルで記述する
-    c.execute("insert into task values (null,?)",(task,))
+    c.execute("insert into users values(null,?,?)",(name, password))
     conn.commit()
     c.close()
-    return redirect("/●●●")　　※リダイレクトしたいページ
+
+    return "会員登録完了致しました"
+
+
+
+
+
+# 掲示板サイト
+@app.
+
+
+
+
+
+
+
+
+# flaskアプリを動かすための記述
+if __name__ == "__main__":
+    app.run(debug = True)
