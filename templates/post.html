@@ -1,0 +1,10 @@
+<!-- 記事投稿HTML -->
+
+{% extends "base.html" %}
+{% block content %}
+<form action="/post" method="post">
+    <input type="text" size="50" maxlength="50" name="task">
+    <input type="submit" name="save" value="投稿">
+</form>
+
+{% endblock %}
