@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/map" method="post">
+  <p>HP</p>
+  <label><input type="radio" name="HP">Azir Cave</label>
+  <label><input type="radio" name="HP">GunRunner</label>
+  <label><input type="radio" name="HP">Hakney Yard</label>
+  <label><input type="radio" name="HP">Rammaza</label>
+  <label><input type="radio" name="HP">St.Petrograd</label>
+  <p>SD</p>
+  <label><input type="radio" name="SD">Arklov Peak</label>
+  <label><input type="radio" name="SD">Gun Runner</label>
+  <label><input type="radio" name="SD">Picadelly</label>
+  <label><input type="radio" name="SD">Rammaza</label>
+  <label><input type="radio" name="SD">St.Petrograd</label>
+  <p>DOM</p>
+  <label><input type="radio" name="dom">Gun Runner</label>
+  <label><input type="radio" name="dom">Hakney Yard</label>
+  <label><input type="radio" name="dom">St.Petrograd</label>
+
+  <table border="solid 1px #fff" style="width: 100%;">
+    <tr><th>name</th><th>kill</th><th>death</th><th>times</th><th>defence</th><th>aproach</th><th>win</th><th>lose</th></tr>
+    <tr>
+      <td><input type="text" name="player_name1"></td>
+      <td><input type="text" name="kill_1"></td>
+      <td><input type="text" name="death1"></td>
+      <td><input type="text" name="times1"></td>
+      <td><input type="text" name="defence1"></td>
+      <td><input type="text" name="aproach1"></td>
+      <td><input type="text" name="win1"></td>
+      <td><input type="text" name="lose1"></td>
+      </tr>
+    <tr>
+      <td><input type="text" name="player_name1"></td>
+      <td><input type="text" name="kill_1"></td>
+      <td><input type="text" name="death1"></td>
+      <td><input type="text" name="times1"></td>
+      <td><input type="text" name="defence1"></td>
+      <td><input type="text" name="aproach1"></td>
+      <td><input type="text" name="win1"></td>
+      <td><input type="text" name="lose1"></td>
+      </tr>
+    <tr>
+      <td><input type="text" name="player_name1"></td>
+      <td><input type="text" name="kill_1"></td>
+      <td><input type="text" name="death1"></td>
+      <td><input type="text" name="times1"></td>
+      <td><input type="text" name="defence1"></td>
+      <td><input type="text" name="aproach1"></td>
+      <td><input type="text" name="win1"></td>
+      <td><input type="text" name="lose1"></td>
+      </tr>
+    <tr>
+      <td><input type="text" name="player_name1"></td>
+      <td><input type="text" name="kill_1"></td>
+      <td><input type="text" name="death1"></td>
+      <td><input type="text" name="times1"></td>
+      <td><input type="text" name="defence1"></td>
+      <td><input type="text" name="aproach1"></td>
+      <td><input type="text" name="win1"></td>
+      <td><input type="text" name="lose1"></td>
+      </tr>
+    <tr>
+      <td><input type="text" name="player_name1"></td>
+      <td><input type="text" name="kill_1"></td>
+      <td><input type="text" name="death1"></td>
+      <td><input type="text" name="times1"></td>
+      <td><input type="text" name="defence1"></td>
+      <td><input type="text" name="aproach1"></td>
+      <td><input type="text" name="win1"></td>
+      <td><input type="text" name="lose1"></td>
+      </tr>
+  </table>
+
+
+
+</form>
+
+{% end block%}
