@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table border="1">
+    <!-- app.pyのディクショナリーがここのtask_listに入ってそれがitmeに代入される -->
+    {% for item in grade_list %}
+    <tr style="width:100%;">
+        <td>{{item["name"]}}</td>
+        <td>{{item["kill"]}}</td>
+        <td>{{item["death"]}}</td>
+        <td>{{item["point_time"]}}</td>
+        <td>{{item["defense"]}}</td>
+        <td>{{item["win"]}}</td>
+        <td>{{item["lose"]}}</td>
+        <td>{{item["kd"]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
