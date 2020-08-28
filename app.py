@@ -44,22 +44,45 @@ def add_post():
     
     return redirect("/")
 
-# リスト表
-@app.route("/list")
-def task_list():
+
+# map 戦歴記入ページ
+@app.route("/map",methods=["GET"])
+def map_get():
+    return render_template("/map.html")
+@app.route("/map",methods=["POST"])
+def map_post():
+    map = request.form.get("map")
+    player_name1 = request.form.get("player_name1")
+    kill_1 =  request.form.get("kill_1")
+    death1 =  request.form.get("death1")
+    times1 =  request.form.get("times1")
+    defence1 =  request.form.get("defence1")
+    win1 =  request.form.get("win1")
+    lose1 =  request.form.get("lose1")
+
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
-        
-    c.execute("select published, from *")
-        # 取得したデータ扱うには一旦、変数にしなければいけない
-        # 空の変数を作成する
-    task_list = []
-    for row in c.fetchall():
-        
-        task_list.append({"id" : row[0], "task" : row[1]})
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(player_name1,kill_1,death1,times1,defence1,win1,lose1,map))
+    conn.commit()
     c.close()
-    print(task_list)
-    return render_template("task_list.html",task_list = task_list)
+    
+    return redirect("/grade")
+
+# GRADE
+@app.route("/grade")
+def grade_list():
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+        # taskテーブルからすべての値を取得する
+    c.execute("select id, name, kill, death, point_time, defense,  win, lose from map")
+    grade_list = []
+    for row in c.fetchall():
+    
+        grade_list.append({"id": row[0], "name":row[1], "kill": row[2], "death": row[3], "point-time": row[4], "defense": row[5],  "win": row[6], "lose": row[7]})
+    c.close()
+    print(grade_list)
+    return render_template("grade.html",grade_list = grade_list)
+
 
 
 
