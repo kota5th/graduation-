@@ -2,6 +2,8 @@ import sqlite3
 from flask import Flask, render_template, request,redirect,session
 app = Flask(__name__) 
 
+app.secret_key = "sunaebe"
+
 @app.route("/")
 def index():
     return "hello"
@@ -89,10 +91,11 @@ def map_post():
     defence1 =  request.form.get("defence1")
     win1 =  request.form.get("win1")
     lose1 =  request.form.get("lose1")
+    user_id = session["user_id"]
 
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
-    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(player_name1,kill_1,death1,times1,defence1,win1,lose1,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?,?)",(user_id,player_name1,kill_1,death1,times1,defence1,win1,lose1,map))
     conn.commit()
     c.close()
     
@@ -101,24 +104,57 @@ def map_post():
 # GRADE
 @app.route("/grade")
 def grade_list():
+        user_id = session["user_id"]
+        conn = sqlite3.connect("flasktest.db")
+        c = conn.cursor()
+            # taskテーブルからすべての値を取得する
+
+        c.execute("select name, kill, death, point_time, defense, win, kill / death as kd, kill + death as approach from map where user_id = user_id" )
+        grade_list = []
+        for row in c.fetchall():
+            
+        
+            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "kd":row[6], "approach": row[7]})
+
+        c.close()
+        print(grade_list)
+        return render_template("grade.html",grade_list = grade_list)
+
+@app.route("/search", methods=["get"])
+def search_ent():
+
+    return render_template("search.html")
+
+
+
+@app.route("/search", methods=["post"])
+def search_post():
+    team = request.form.get("team")
+
+    return redirect("/search_result")
+
+
+@app.route("/search_result", methods=["post"])
+def search_entry():
+    team = request.form.get("team")
+    user_id = session["user_id"]
+    print(team)
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
-        # taskテーブルからすべての値を取得する
-
-    c.execute("select name, kill, death, point_time, defense, win, lose, kill / death as kd from map")
+     # taskテーブルからすべての値を取得する
+    c.execute("select user_id from map where name = ?", (team,))
+    task = c.fetchone()
+    c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ?", (user_id,))
     grade_list = []
-    for row in c.fetchall():
+    for row in c.fetchall():   
         
-    
-        grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":f'{row[7]:.2f}'})
+        grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
     c.close()
     print(grade_list)
-    return render_template("grade.html",grade_list = grade_list)
-
-
-
-
+    print(task)
+    print(user_id)
+    return render_template("grade.html", grade_list = grade_list)
 
 
 

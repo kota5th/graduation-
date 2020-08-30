@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
+<form action="/search_result" method="post">
+    名前を入力してください：<input type="text" name="team">
+    <input type="submit" value="検索する">
+</form>
+
 <table border="1">
+    <tr>
+        <td>name</td>
+        <td>kill</td>
+        <td>death</td>
+        <td>point_time</td>
+        <td>defence</td>
+        <td>win</td>
+        <td>kd</td>
+        <td>approach</td>
+    </tr>
     <!-- app.pyのディクショナリーがここのtask_listに入ってそれがitmeに代入される -->
     {% for item in grade_list %}
     <tr style="width:100%;">
@@ -11,8 +26,8 @@
         <td>{{item["point_time"]}}</td>
         <td>{{item["defense"]}}</td>
         <td>{{item["win"]}}</td>
-        <td>{{item["lose"]}}</td>
         <td>{{item["kd"]}}</td>
+        <td>{{item["approach"]}}</td>
     </tr>
     {% endfor %}
 </table>
