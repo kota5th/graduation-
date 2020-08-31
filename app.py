@@ -74,6 +74,9 @@ def grade_list():
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
         # taskテーブルからすべての値を取得する
+
+    c.execute("select id , kill / death as kd from map ")
+    kd = c.fetchone()
     c.execute("select id, name, kill, death, point_time, defense,  win, lose from map")
     grade_list = []
     for row in c.fetchall():
@@ -81,6 +84,7 @@ def grade_list():
         grade_list.append({"id": row[0], "name":row[1], "kill": row[2], "death": row[3], "point-time": row[4], "defense": row[5],  "win": row[6], "lose": row[7]})
     c.close()
     print(grade_list)
+    print(kd[1])
     return render_template("grade.html",grade_list = grade_list)
 
 
