@@ -4,12 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
   <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <p>ここはヘッダーだよ</p>
+  <header class="box header">
+    <div>
+      <h1 class="h-title"><span class="h-title-c">Clan Data</span></h1>
+
+      <ul>
+        <li><a href="/">Top</a></li>
+        <li><a href="/grade">My page</a></li>
+        <li><a href="/friends">掲示板</a></li>
+        <li><a href="/login">Q&A</a></li>
+      </ul>
+
+    </div>
   </header>
 
   {% block content %}
@@ -17,7 +28,7 @@
   {% endblock %}
 
   <footer>
-    <p>ここはふったーだよ</p>
+    <p>Sunabaco Ebetsu &copy; all rights reserved</p>
   </footer>
 </body>
 

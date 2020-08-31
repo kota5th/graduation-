@@ -1,6 +1,8 @@
 import sqlite3
 from flask import Flask, render_template, request,redirect,session
 app = Flask(__name__) 
+UPLOAD_FOLDER = '/static/img'
+
 
 app.secret_key = "sunaebe"
 
@@ -90,12 +92,39 @@ def map_post():
     times1 =  request.form.get("times1")
     defence1 =  request.form.get("defence1")
     win1 =  request.form.get("win1")
-    lose1 =  request.form.get("lose1")
+    player_name2 = request.form.get("player_name2")
+    kill_2 =  request.form.get("kill_2")
+    death2 =  request.form.get("death2")
+    times2 =  request.form.get("times2")
+    defence2 =  request.form.get("defence2")
+    win2 =  request.form.get("win2")
+    player_name3 = request.form.get("player_name3")
+    kill_3 =  request.form.get("kill_3")
+    death3 =  request.form.get("death3")
+    times3 =  request.form.get("times3")
+    defence3 =  request.form.get("defence3")
+    win3 =  request.form.get("win3")
+    player_name4 = request.form.get("player_name4")
+    kill_4 =  request.form.get("kill_4")
+    death4 =  request.form.get("death4")
+    times4 =  request.form.get("times4")
+    defence4 =  request.form.get("defence4")
+    win4 =  request.form.get("win4")
+    player_name5 = request.form.get("player_name1")
+    kill_5 =  request.form.get("kill_5")
+    death5 =  request.form.get("death5")
+    times5 =  request.form.get("times5")
+    defence5 =  request.form.get("defence5")
+    win5 =  request.form.get("win5")
     user_id = session["user_id"]
 
     conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
-    c.execute("insert into map values (null,?,?,?,?,?,?,?,?,?)",(user_id,player_name1,kill_1,death1,times1,defence1,win1,lose1,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(user_id,player_name1,kill_1,death1,times1,defence1,win1,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(user_id,player_name2,kill_2,death2,times2,defence2,win2,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(user_id,player_name3,kill_3,death3,times3,defence3,win3,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(user_id,player_name4,kill_4,death4,times4,defence4,win4,map))
+    c.execute("insert into map values (null,?,?,?,?,?,?,?,?)",(user_id,player_name5,kill_5,death5,times5,defence5,win5,map))
     conn.commit()
     c.close()
     
@@ -136,36 +165,39 @@ def search_post():
 # 検索結果
 @app.route("/search_result", methods=["post"])
 def search_entry():
+    
     team = request.form.get("team")
     user_id = session["user_id"]
     map = request.form.get("map")
+    print(map)
     print(team)
-    conn = sqlite3.connect("flasktest.db")
-    c = conn.cursor()
-        # taskテーブルからすべての値を取得する
-    c.execute("select user_id from map where name = ?", (team,))
-    task = c.fetchone()
-    c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team
-    ))
-    grade_list = []
-    for row in c.fetchall():   
+    if map == 0:
+        conn = sqlite3.connect("flasktest.db")
+        c = conn.cursor()
+        c.execute("select user_id from map where name = ?", (team,))
+        task = c.fetchone()
+        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
+        grade_list = []
+        for row in c.fetchall():   
             
-        grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
+            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
-    c.close()
+        c.close()
     
-    # else:
-    #     conn = sqlite3.connect("flasktest.db")
-    #     c = conn.cursor()
-    #     c.execute("select user_id from map where name = ?", (team,))
-    #     task = c.fetchone()
-    #     c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
-    #     grade_list = []
-    #     for row in c.fetchall():   
-            
-    #         grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
+    else:
+        
+        conn = sqlite3.connect("flasktest.db")
+        c = conn.cursor()
+            # taskテーブルからすべての値を取得する
+        c.execute("select user_id from map where name = ?", (team,))
+        task = c.fetchone()
+        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ? and map = ?", (user_id, team, map))
+        grade_list = []
+        for row in c.fetchall():   
+                
+            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
-    #     c.close()
+        c.close()
     print(grade_list)
     print(task)
     print(user_id)
