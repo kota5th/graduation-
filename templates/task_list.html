@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% for item in task_list %}
+<div class="">
+    <p>日付:{{item["date"]}}</p>
+    <p>名前:{{item["user_name"]}}</p>
+    <p>投稿内容:{{item["task"]}}</p>
+
+</div>
+{% endfor %}
+
+<a href="/friends">リストの追加</a>
+
+{% endblock %}
