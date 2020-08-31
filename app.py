@@ -140,33 +140,32 @@ def search_entry():
     user_id = session["user_id"]
     map = request.form.get("map")
     print(team)
-    if map is None:
-        conn = sqlite3.connect("flasktest.db")
-        c = conn.cursor()
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
         # taskテーブルからすべての値を取得する
-        c.execute("select user_id from map where name = ?", (team,))
-        task = c.fetchone()
-        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
-        grade_list = []
-        for row in c.fetchall():   
+    c.execute("select user_id from map where name = ?", (team,))
+    task = c.fetchone()
+    c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team
+    ))
+    grade_list = []
+    for row in c.fetchall():   
             
-            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
+        grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
-        c.close()
+    c.close()
     
-    else:
-        conn = sqlite3.connect("flasktest.db")
-        c = conn.cursor()
-        # taskテーブルからすべての値を取得する
-        c.execute("select user_id from map where name = ?", (team,))
-        task = c.fetchone()
-        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ? and map = ?", (user_id, team, map))
-        grade_list = []
-        for row in c.fetchall():   
+    # else:
+    #     conn = sqlite3.connect("flasktest.db")
+    #     c = conn.cursor()
+    #     c.execute("select user_id from map where name = ?", (team,))
+    #     task = c.fetchone()
+    #     c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
+    #     grade_list = []
+    #     for row in c.fetchall():   
             
-            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
+    #         grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
-        c.close()
+    #     c.close()
     print(grade_list)
     print(task)
     print(user_id)
