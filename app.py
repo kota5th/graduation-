@@ -1,6 +1,9 @@
 import sqlite3
 from flask import Flask, render_template, request,redirect,session
+from datetime import datetime
+
 app = Flask(__name__) 
+
 
 @app.route("/")
 def index():
@@ -16,7 +19,6 @@ def regist_post():
     name = request.form.get("name")
     password = request.form.get("password")
 
-    conn = sqlite3.connect("flasktest.db")
     c = conn.cursor()
     c.execute("insert into users values(null,?,?)",(name, password))
     conn.commit()
@@ -88,11 +90,77 @@ def grade_list():
     return render_template("grade.html",grade_list = grade_list)
 
 
+# 仲間募集掲示板
+@app.route("/friends", methods=["GET"])
+def friend_get():
+    return render_template("/friends.html")
+@app.route("/friends", methods=["POST"])
+def friend_post():
+    dt_now = datetime.now().strftime('%m-%d %H:%M:%S')
+    print(dt_now)
+    task = request.form.get("task")
+    user_name = request.form.get("user_name")
+    # user_id = session["user_id"]
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+    c.execute("insert into friend_recruitment values (null,?,?,?)",(task,user_name,dt_now,))
+    conn.commit()
+    c.close()
+    
+    return redirect("/list")
+
+
+@app.route("/list")
+def task_list():
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+    c.execute("select id, task, user_name,date from friend_recruitment")
+    task_list = []
+    for row in c.fetchall():
+        task_list.append({"id":row[0] , "task":row[1] , "user_name":row[2] , "date":row[3]})
+    return render_template("task_list.html", task_list = task_list)
+
+
+@app.route("/edit/<int:id>")
+def edit(id):
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+    c.execute("select task from friend_recruitment where id = ?",(id,))
+    task = c.fetchone()
+    c.close()
+
+    if task is not None:
+        task = task[0]
+    else:
+        return "見つかりません"
+
+    task = task[0]
+    item = {"id":id,"task":task}
+    return render_template("edit.html" , task = item )
+
+@app.route("/edit", methods=["POST"])
+def update_task():
+    item_id = request.form.get("task_id")
+    item_id = int(item_id)
+    task = request.form.get("task")
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+    c.execute("update friend_recruitment set task = ? where id = ?",(task,item_id))
+    conn.commit()
+    c.close()
+
+    return redirect("/list")
 
 
 
-
-
+@app.route("/del/<int:id>")
+def del_task(id):
+    conn = sqlite3.connect("flasktest.db")
+    c = conn.cursor()
+    c.execute("delete from friend_recruitment where id = ?",(id,))
+    conn.commit()
+    c.close()
+    return redirect("/list")
 
 
 
