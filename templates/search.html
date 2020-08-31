@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/search_result" method="post">
+  名前を入力してください：<input type="text" name="team">
+  マップを入力してください<input type="text" name="map">
+  <input type="submit" value="検索する">
+</form>
+
+{% endblock %}

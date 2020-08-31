@@ -1,29 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
+<form action="/search_result" method="post">
+    名前を入力してください：<input type="text" name="team">
+    <input type="submit" value="検索する">
+</form>
+
 <table border="1">
+    <tr>
+        <td>name</td>
+        <td>kill</td>
+        <td>death</td>
+        <td>point_time</td>
+        <td>defence</td>
+        <td>win</td>
+        <td>kd</td>
+        <td>approach</td>
+    </tr>
     <!-- app.pyのディクショナリーがここのtask_listに入ってそれがitmeに代入される -->
     {% for item in grade_list %}
     <tr style="width:100%;">
-        <td>{{item["id"]}}</td>
-        <td>{{item["player_name1"]}}</td>
-        <td>{{item["kill_1"]}}</td>
-        <td>{{item["death1"]}}</td>
-        <td>{{item["times1"]}}</td>
-        <td>{{item["defence1"]}}</td>
-        <td>{{item["aproach1"]}}</td>
-        <td>{{item["win1"]}}</td>
-        <td>{{item["lose1"]}}</td>
-
-
-
-        <td><a href="/edit/{{item['id']}}">編集</a></td>
-        <!-- delete機能作る -->
-        <td><a href="/del/{{item['id']}}">削除</a></td>
+        <td>{{item["name"]}}</td>
+        <td>{{item["kill"]}}</td>
+        <td>{{item["death"]}}</td>
+        <td>{{item["point_time"]}}</td>
+        <td>{{item["defense"]}}</td>
+        <td>{{item["win"]}}</td>
+        <td>{{item["kd"]}}</td>
+        <td>{{item["approach"]}}</td>
     </tr>
     {% endfor %}
 </table>
 
-<a href="/add">リストの追加</a>
 
 {% endblock %}
