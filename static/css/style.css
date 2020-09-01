@@ -42,13 +42,15 @@ img {
 /* --------------------------------------------------- */
 
 .box {
-  width: 100%;
+  width: 80%;
   text-align: center;
   margin: 0 auto;
+  background-color: #eaeaea;
 }
 
 .header {
   background-image: url(../img/13854.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   height: 300px;
 }
@@ -74,17 +76,48 @@ ul li {
   background-color: #009933;
 }
 
-footer {
-  background-color: gray;
+#footer {
+  background-color: #66cdaa;
   height: auto;
 }
 
+/* 登録機能のcss */
+.regist {
+  margin: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #FFC605;
+  color: #FFF;
+  width: 80px;
+  padding: 0.8em;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  transition: .3s ease-out;
+  margin: 20px;
+}
+
+.btn :hover {
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.12), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 5px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.login {
+  background-color: #eaeaea;
+  padding: 50px 0;
+}
+
+/* 検索機能のcss */
 .s-title {
   margin-top: 30px;
 }
 
 .map-op {
-  width: 50%;
+  width: 400px;
   line-height: 1.6;
   letter-spacing: 1.0;
   margin: 0 auto;
@@ -97,11 +130,114 @@ footer {
 
 .s-form {
   margin: 0 auto;
+  width: 800px;
 }
 
 .search {
-  margin-top: 15px;
-  margin-bottom: 50px;
-  width: 100%;
+  margin: 20px auto;
+  width: 800px;
   text-align: center;
+}
+
+/* 投稿記事作成ページ */
+.f-post input {
+  margin: 20px;
+}
+
+.f-title {
+  padding: 20px;
+}
+
+.f-content {
+  border-bottom: 1px solid #000;
+  padding: 30px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.f-content p {
+  padding: 10px;
+}
+
+.f-add {
+  display: inline-block;
+  width: 100px;
+  margin: 20px;
+}
+
+/* マップ作り */
+.g-title {
+  padding-top: 20px;
+}
+
+.map-sel-inp {
+  margin-bottom: 20px;
+}
+
+.map-sel {
+  width: 60%;
+  line-height: 1.6;
+  letter-spacing: 1.0;
+  margin: 0px auto;
+  text-align: left;
+  padding: 30px;
+}
+
+
+.grade {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 auto;
+}
+
+.grade th:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.grade th:last-child {
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.grade th {
+  text-align: center;
+  color: white;
+  background: linear-gradient(#829ebc, #7fff00);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+  width: 13%;
+  padding: 10px 0;
+}
+
+.grade td {
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top: none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 13%;
+  padding: 10px 0;
+}
+
+.grade td:last-child {
+  border-right: 1px solid #a8b7c5;
+}
+
+.grade tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+.grade tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+table td input {
+  width: 25%;
+}
+
+.search-btn {
+  margin-top: 20px;
 }

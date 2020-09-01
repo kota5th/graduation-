@@ -1,63 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
-1:HP-Azircave 2;GunRunner 3:HP-hakneyYard 4:HP-Rammaza 5:St.Petrograd 6:SD-ArklovPeak 7:SD-GunRunner 8:SD-Rammaza
-9:SD-St,Petrograd 10:SD-Piccadely 11:GunRunner 12:DOM-HakneyYard 13:DOM-St.Petrograd
-<form action="/map" method="post">
-  数字を入力して下さい:<input type="text" name="map">
+<div class="box">
+  <h2 class="g-title">戦績入力</h2>
+  <div class="map-sel">
+    <p>1:HP-Azircave 2:HP-GunRunner 3:HP-hakneyYard 4:HP-Rammaza 5:HP-St.Petrograd</p>
+    <p>6:SD-ArklovPeak 7:SD-GunRunner 8:SD-Piccadely 9:SD-SD-Rammaza 10: SD-St.Petrograd</p>
+    <p>11:DOM-GunRunner 12:DOM-HakneyYard 13:DOM-St.Petrograd</p>
+  </div>
+  <form action="/map" method="post">
+    数字を入力して下さい:<input type="text" name="map" class="map-sel-inp">
 
-  <table border="solid 1px #fff" style="width: 100%;">
-    <tr>
-      <th>name</th>
-      <th>kill</th>
-      <th>death</th>
-      <th>times</th>
-      <th>defence</th>
-      <th>win</th>
-    </tr>
-    <tr>
-      <td><input type="text" name="player_name1"></td>
-      <td><input type="text" name="kill_1"></td>
-      <td><input type="text" name="death1"></td>
-      <td><input type="text" name="times1"></td>
-      <td><input type="text" name="defence1"></td>
-      <td><input type="text" name="win1"></td>
-    </tr>
-    <tr>
-      <td><input type="text" name="player_name2"></td>
-      <td><input type="text" name="kill_2"></td>
-      <td><input type="text" name="death2"></td>
-      <td><input type="text" name="times2"></td>
-      <td><input type="text" name="defence2"></td>
-      <td><input type="text" name="win2"></td>
-    </tr>
-    <tr>
-      <td><input type="text" name="player_name3"></td>
-      <td><input type="text" name="kill_3"></td>
-      <td><input type="text" name="death3"></td>
-      <td><input type="text" name="times3"></td>
-      <td><input type="text" name="defence3"></td>
-      <td><input type="text" name="win3"></td>
-    </tr>
-    <tr>
-      <td><input type="text" name="player_name4"></td>
-      <td><input type="text" name="kill_4"></td>
-      <td><input type="text" name="death4"></td>
-      <td><input type="text" name="times4"></td>
-      <td><input type="text" name="defence4"></td>
-      <td><input type="text" name="win4"></td>
-    </tr>
-    <tr>
-      <td><input type="text" name="player_name5"></td>
-      <td><input type="text" name="kill_5"></td>
-      <td><input type="text" name="death5"></td>
-      <td><input type="text" name="times5"></td>
-      <td><input type="text" name="defence5"></td>
-      <td><input type="text" name="win5"></td>
-    </tr>
-  </table>
+    <table class="grade">
+      <tr>
+        <th>name</th>
+        <th>kill</th>
+        <th>death</th>
+        <th>times</th>
+        <th>defence</th>
+        <th>win</th>
+      </tr>
+      <tr>
+        <td><input type="text" name="player_name1"></td>
+        <td><input type="text" name="kill_1"></td>
+        <td><input type="text" name="death1"></td>
+        <td><input type="text" name="times1"></td>
+        <td><input type="text" name="defence1"></td>
+        <td><input type="text" name="win1"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="player_name2"></td>
+        <td><input type="text" name="kill_2"></td>
+        <td><input type="text" name="death2"></td>
+        <td><input type="text" name="times2"></td>
+        <td><input type="text" name="defence2"></td>
+        <td><input type="text" name="win2"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="player_name3"></td>
+        <td><input type="text" name="kill_3"></td>
+        <td><input type="text" name="death3"></td>
+        <td><input type="text" name="times3"></td>
+        <td><input type="text" name="defence3"></td>
+        <td><input type="text" name="win3"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="player_name4"></td>
+        <td><input type="text" name="kill_4"></td>
+        <td><input type="text" name="death4"></td>
+        <td><input type="text" name="times4"></td>
+        <td><input type="text" name="defence4"></td>
+        <td><input type="text" name="win4"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="player_name5"></td>
+        <td><input type="text" name="kill_5"></td>
+        <td><input type="text" name="death5"></td>
+        <td><input type="text" name="times5"></td>
+        <td><input type="text" name="defence5"></td>
+        <td><input type="text" name="win5"></td>
+      </tr>
+    </table>
 
 
-  <input type="submit" value="送信">
-</form>
+    <input type="submit" value="送信" class="btn">
+  </form>
+</div>
 
 {% endblock %}
