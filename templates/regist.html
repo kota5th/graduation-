@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- 会員登録HTMLだよー -->
-
-<form action="/regist" method="post">
-    名前:<input type="text" name="name">
-    パスワード:<input type="password" name="password">
-    <input type="submit" name="save" value="登録">
-</form>
+<div class="box login">
+    <h2>会員登録</h2>
+    <form action="/regist" method="post" class="regist">
+        名前<input type="text" name="name" class="name">
+        パスワード<input type="password" name="password" class="pass"><br>
+        <input type="submit" name="save" value="登録" class="btn">
+    </form>
+</div>
 
 
 

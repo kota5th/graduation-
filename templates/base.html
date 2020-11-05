@@ -4,19 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen and (min-width:765px)">
+  <link rel="stylesheet" type="text/css" href="/static/css/style_sp.css" media="screen and (max-width:764px)">
+  <title>Data Clan</title>
 </head>
 
 <body>
   <header class="box header">
-    <div>
+    <div class="header2">
       <h1 class="h-title"><span class="h-title-c">Clan Data</span></h1>
 
       <ul>
         <li><a href="/">Top</a></li>
-        <li><a href="/grade">My page</a></li>
-        <li><a href="/friends">掲示板</a></li>
+        <li><a href="/grade">My Grade</a></li>
+        <li><a href="/list">掲示板</a></li>
         <li><a href="/login">Q&A</a></li>
       </ul>
 
@@ -27,7 +28,7 @@
 
   {% endblock %}
 
-  <footer>
+  <footer class="box" id="footer">
     <p>Sunabaco Ebetsu &copy; all rights reserved</p>
   </footer>
 </body>

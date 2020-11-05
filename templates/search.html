@@ -1,17 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="s-title">戦績検索</h2>
-<div class="map-op">
+<div class="box">
+  <h2 class="s-title">戦績検索</h2>
+
   <h4 class="m-title">マップ番号</h4>
-  <p>1:HP-Azircave 2:HP-GunRunner 3:HP-hakneyYard <br>4:HP-Rammaza 5:HP-St.Petrograd</p>
-  <p>6:SD-ArklovPeak 7:SD-GunRunner 8:SD-Piccadely 9:SD-Rammaza 10:SD-St.Petrograd</p>
-  <p>11:DOM-GunRunner 12:DOM-HakneyYard<br> 13:DOM-St.Petrograd</p>
-</div>
-<div class="s-form">
-  <form action="/search_result" method="post" class="search">
-    <p>名前を入力してください：<input type="text" name="team" class="team"></p><br>
-    <p>マップを入力してください：<input type="text" name="map" value="0" class="map"></p><br>
-    <input type="submit" value="検索する">
-  </form>
+  <div class="map-sel">
+    <p>1:HP-Azircave</p>
+    <p>2:HP-GunRunner</p>
+    <p>3:HP-hakneyYard</p>
+    <p>4:HP-Rammaza </p>
+    <p>5:HP-St.Petrograd</p>
+    <p>6:SD-ArklovPeak</p>
+    <p>7:SD-GunRunner</p>
+    <p>8:SD-Piccadely</p>
+    <p>9:SD-Rammaza</p>
+    <p>10:SD-St.Petrograd</p>
+    <p>11:DOM-GunRunner</p>
+    <p>12:DOM-HakneyYard</p>
+    <p>13:DOM-St.Petrograd</p>
+  </div>
+
+  <div class="s-form">
+    <form action="/search_result" method="post" class="search">
+      <p>名前を入力してください：<input type="text" name="team" class="team"></p><br>
+      <p>マップを入力してください：<input type="text" name="map" value="0" class="map"></p><br>
+      <input type="submit" value="検索する">
+    </form>
+  </div>
 </div>
 {% endblock %}

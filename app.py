@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask, render_template, request,redirect,session
+from datetime import datetime
 app = Flask(__name__) 
 UPLOAD_FOLDER = '/static/img'
 
@@ -8,7 +9,7 @@ app.secret_key = "sunaebe"
 
 @app.route("/")
 def index():
-    return "hello"
+    return render_template('top.html')
 
 # 会員登録 
 @app.route("/regist",methods=["GET"])
@@ -65,7 +66,11 @@ def login():
 # 記事投稿
 @app.route("/post",methods=["GET"])
 def add_get():
-    return render_template("/post.html")
+    if "user_id" in session:
+        return render_template("/post.html")
+    else:
+        return render_template('login.html')
+    
 @app.route("/post",methods=["POST"])
 def add_post():
     task = request.form.get("task")
@@ -82,7 +87,11 @@ def add_post():
 # map 戦歴記入ページ
 @app.route("/map",methods=["GET"])
 def map_get():
-    return render_template("/map.html")
+    if "user_id" in session:
+        return render_template("/map.html")
+    else:
+        return render_template('login.html')
+    
 @app.route("/map",methods=["POST"])
 def map_post():
     map = request.form.get("map")
@@ -110,7 +119,7 @@ def map_post():
     times4 =  request.form.get("times4")
     defence4 =  request.form.get("defence4")
     win4 =  request.form.get("win4")
-    player_name5 = request.form.get("player_name1")
+    player_name5 = request.form.get("player_name5")
     kill_5 =  request.form.get("kill_5")
     death5 =  request.form.get("death5")
     times5 =  request.form.get("times5")
@@ -133,6 +142,7 @@ def map_post():
 # GRADE
 @app.route("/grade")
 def grade_list():
+    if "user_id" in session:
         user_id = session["user_id"]
         conn = sqlite3.connect("flasktest.db")
         c = conn.cursor()
@@ -148,64 +158,67 @@ def grade_list():
         c.close()
         print(grade_list)
         return render_template("grade.html",grade_list = grade_list)
+    else:
+        return render_template('login.html')
 
 @app.route("/search", methods=["get"])
 def search_ent():
+        return render_template("search.html")
 
-    return render_template("search.html")
+    
 
 
 # 検索
 @app.route("/search", methods=["post"])
 def search_post():
-    team = request.form.get("team")
-
-    return redirect("/search_result")
+        return redirect("/search_result")
 
 # 検索結果
 @app.route("/search_result", methods=["post"])
 def search_entry():
     
-    team = request.form.get("team")
-    user_id = session["user_id"]
-    map = request.form.get("map")
-    print(map)
-    print(team)
-    if map == 0:
-        conn = sqlite3.connect("flasktest.db")
-        c = conn.cursor()
-        c.execute("select user_id from map where name = ?", (team,))
-        task = c.fetchone()
-        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
-        grade_list = []
-        for row in c.fetchall():   
-            
-            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
-
-        c.close()
-    
-    else:
-        
-        conn = sqlite3.connect("flasktest.db")
-        c = conn.cursor()
-            # taskテーブルからすべての値を取得する
-        c.execute("select user_id from map where name = ?", (team,))
-        task = c.fetchone()
-        c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ? and map = ?", (user_id, team, map))
-        grade_list = []
-        for row in c.fetchall():   
+        team = request.form.get("team")
+        user_id = session["user_id"]
+        map = request.form.get("map")
+        print(map)
+        print(team)
+        if map == 0:
+            conn = sqlite3.connect("flasktest.db")
+            c = conn.cursor()
+            c.execute("select user_id from map where name = ?", (team,))
+            task = c.fetchone()
+            c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(lose), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ?", (user_id, team))
+            grade_list = []
+            for row in c.fetchall():   
                 
-            grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
+                grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "lose": row[6], "kd":row[7], "approach": row[8]})
 
-        c.close()
-    print(grade_list)
-    print(task)
-    print(user_id)
-    return render_template("grade.html", grade_list = grade_list)
+            c.close()
+        
+        else:
+            
+            conn = sqlite3.connect("flasktest.db")
+            c = conn.cursor()
+                # taskテーブルからすべての値を取得する
+            c.execute("select user_id from map where name = ?", (team,))
+            task = c.fetchone()
+            c.execute("select name, avg(kill), avg(death), avg(point_time), avg(defense), avg(win), avg(kill / death) as kd, avg(kill + death) as approach from map where user_id = ? and name = ? and map = ?", (user_id, team, map))
+            grade_list = []
+            for row in c.fetchall():   
+                    
+                grade_list.append({"name":row[0], "kill": row[1], "death": row[2], "point_time": row[3], "defense": row[4],  "win": row[5], "kd":row[6], "approach": row[7]})
+
+            c.close()
+        print(grade_list)
+        print(task)
+        print(user_id)
+        return render_template("grade.html", grade_list = grade_list)
+
 
 @app.route("/friends", methods=["GET"])
 def friend_get():
-    return render_template("/friends.html")
+     return render_template("/friends.html")
+     
 @app.route("/friends", methods=["POST"])
 def friend_post():
     dt_now = datetime.now().strftime('%m-%d %H:%M:%S')
@@ -224,14 +237,15 @@ def friend_post():
 
 @app.route("/list")
 def task_list():
-    conn = sqlite3.connect("flasktest.db")
-    c = conn.cursor()
-    c.execute("select id, task, user_name,date from friend_recruitment")
-    task_list = []
-    for row in c.fetchall():
-        task_list.append({"id":row[0] , "task":row[1] , "user_name":row[2] , "date":row[3]})
-    return render_template("task_list.html", task_list = task_list)
+    
 
+        conn = sqlite3.connect("flasktest.db")
+        c = conn.cursor()
+        c.execute("select id, task, user_name,date from friend_recruitment order by id desc")
+        task_list = []
+        for row in c.fetchall():
+            task_list.append({"id":row[0] , "task":row[1] , "user_name":row[2] , "date":row[3]})
+        return render_template("task_list.html", task_list = task_list)
 
 @app.route("/edit/<int:id>")
 def edit(id):

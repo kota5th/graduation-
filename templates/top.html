@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/css/style.css" media="screen and (min-width:756px)">
+  <link rel="stylesheet" href="static/css/style_sp.css" media="screen and (max-width:756px)">
+  <title>Clan Data</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="static/js/common.js"></script>
+</head>
+
+<body>
+  <header class="header1 content">
+    <h1>Clan Data</h1>
+
+    <ul>
+      <li><a href="/">Top</a></li>
+      <li><a href="/grade">My Grade</a></li>
+      <li><a href="/list">掲示板</a></li>
+      <li><a href="#qa">Q&A</a></li>
+      <li><a href="/login">ログイン</a></li>
+    </ul>
+  </header>
+  <img src="static/img/fps.png" alt="" class="content">
+  <div class="content t-content">
+    <h2>楽しもうFPS!やってみようFPS！</h2>
+    <p>全ての人がFPSの虜になる</p>
+  </div>
+
+  <div class="qa content" id="qa">
+    <h2>Q&A for FPS初心者</h2>
+    <ul>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer1">FPSってどんなゲーム？</a></h3>
+        <ul id="answer1">
+          <li>
+            <p>FPSは武器を使って敵を倒し、勝利目標を達成するゲームです。様々なルールがあり、仲間と協力して勝利を目指します。日本でメジャーなFPSゲームは、「CoD」,「Apex Legends」,「Rainbow 6
+              Siege」,「Fortnite」などがあります。FPS初心者の方は、まず無料から始められるApexやFortniteから遊んでみるといいと思います！</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer2">PC？PS4?Xbox？</a></h3>
+        <ul id="answer2">
+          <li>
+            <p>
+              海外の大規模な大会は、主にPCゲームでの大会が多いです。そのため、プロゲーマーになりたいという人なら、少し高額ですがPCを買ってキーボートとマウスでのプレイになれておいた方がいいと思います。友達と遊んだり、息抜きをするためにゲームをプレイするなら、PS4やXboxで十分な性能を持っています。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer3">チームはどこで募集しているの？</a></h3>
+        <ul id="answer3">
+          <li>
+            <p>
+              esportsチームは主にTwitterに生息していて、そこで募集をかけています。なので、Twitter上でゲーム名+”募集”,”固定”,”チーム”とつけて検索することで快適にチーム探しを行うことができると思います。ちなみに、CoDのEsportsでは”plze”というタグが使用されていて、このタグを使うことでCoDのesportsプレイヤーたちと繋がることができます。他のゲームにもあるかもしれないのでぜひ探してみて下さい。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer4">CoDの武器の種類って何があるの？</a></h3>
+        <ul id="answer4">
+          <li>
+            <p>
+              CoDのEsportsでは、AR/SMG/SR/格闘武器のみが使用できます。そのため、リスポーンありルールだとAR &
+              SMGが、リスポーンなしルールだと全ての武器を使って戦うことになります。また、海外プロの装備をまねして同じ武器を使うことも重要になってきます。強い武器や環境にあった武器を使うことが大切です。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer5">GAってなに？</a></h3>
+        <ul id="answer5">
+          <li>
+            <p>
+              海外では、プロたちの間で取り決められるGA(Gentleman
+              Agreement)というものがあります。これによって、強すぎる武器や戦略性を阻害するものなどを取り除いて勝負をよりシンプルなものにしています。しかし、GAはプロ間の曖昧な取り決めなので日本のアマチュアの選手が情報を取り入れるには、海外のプロのTwitterをフォローして和訳する必要があります。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer6">HPのルールは？</a></h3>
+        <ul id="answer6">
+          <li>
+            <p>
+              HP（ハードポイント）は先に250ポイント獲得することが勝利条件です。地点に1秒入るごとに１ポイント獲得できます。地点は60秒ごとに５つのポイントを順番にローテーションしていきます。その中で、相手の復活地点を遠くしたり、相手を地点に寄せ付けないような動きをすることが勝利のカギになっています。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer7">SDのルールは？</a></h3>
+        <ul id="answer7">
+          <li>
+            <p>
+              SD（サーチ＆デストロイ）は6ラウンド先取したチームの勝利です。攻め側と防衛側に分かれて、交互にラウンドを進めていきます。攻め側は防衛側の全滅またはオブジェクトの破壊で勝利。防衛側は攻め側の全滅または時間切れで勝利です。オブジェクトはマップ内に二つ存在しており、どちらか片方に爆弾を設置できて45秒後に爆発します。チームで作戦に色があり非常に面白いゲームルールです。相手がどのような動きをしてくるかを予測して戦うことと、メンバーとの連携が必要になります。
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 class="at"><a class="answer" data-target="answer8">DOMのルールは？</a></h3>
+        <ul id="answer8">
+          <li>
+            <p>
+              DOM（ドミネーション）は前半後半の2ラウンドの中でより多く得点を取った方の勝利です。得点を取るためには旗を取る必要があります。旗には自陣側・中立・敵陣側の3つがあり、中立だとどちらにもポイントは入りません。5秒に1回ポイントを取得でき、リスポーンするのに5秒かかります。自陣側の旗が２つ、敵陣側の旗が1つの状況を作り出すことを目標に立ち回ることが必要です。
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <footer class="box" id="footer">
+    <p>Sunabaco Ebetsu &copy; all rights reserved</p>
+  </footer>
+</body>
+
+</html>
