@@ -1,0 +1,334 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+/* line 13にtext-aline center追加 */
+body {
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+    min-width: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    border: 0px;
+    vertical-align: bottom;
+}
+
+/* --------------------------------------------------- */
+/* width 80 →100に変更 */
+.box {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #eaeaea;
+}
+
+.header {
+    background-image: url(../img/13854.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.h-title-c {
+    background-color: rgba(116, 118, 150, 0.3);
+    border-radius: 10px;
+}
+
+header .h-title {
+    color: ghostwhite;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.header2 ul {
+    display: flex;
+    justify-content: center;
+}
+
+.header2 ul li {
+    background-color: #009933;
+}
+
+/* width 10% 消去 */
+
+
+#footer {
+    background-color: #66cdaa;
+    height: auto;
+}
+
+/* 登録機能のcss */
+/* margin 25px 消去 →max-width: 100px; margin: auto;追加 */
+.regist {
+    max-width: 100px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #FFC605;
+    color: #FFF;
+    width: 80px;
+    padding: 0.8em;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s ease-out;
+    margin: 20px;
+}
+
+.btn :hover {
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.12), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 5px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.login {
+    background-color: #eaeaea;
+    padding: 50px 0;
+}
+
+/* 検索機能のcss */
+.s-title {
+    margin-top: 30px;
+}
+
+/* text-align left 消去 */
+.map-op {
+    width: 400px;
+    line-height: 1.6;
+    letter-spacing: 1.0;
+    margin: 0 auto;
+
+}
+
+.m-title {
+    text-align: center;
+}
+
+/*   margin: 0 auto; width: 800px消去 display inline-block追加 */
+.s-form {
+    display: inline-block;
+}
+
+/* width 800px消去  display-inline追加するならwidth800px消去しなくてもよい*/
+.search {
+    margin: 20px auto;
+    text-align: center;
+    display: inline;
+}
+
+/* 投稿記事作成ページ */
+/* margin 20px →10pxに変更 */
+.f-post input {
+    margin: 10px;
+}
+
+.f-title {
+    padding: 20px;
+}
+
+.f-content {
+    border-bottom: 1px solid #000;
+    padding: 30px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.f-add {
+    display: inline-block;
+    width: 100px;
+    margin: 20px;
+}
+
+/* マップ作り */
+.g-title {
+    padding-top: 20px;
+}
+
+.map-sel-inp {
+    margin-bottom: 20px;
+}
+
+.map-sel {
+    width: 40%;
+    line-height: 1.6;
+    letter-spacing: 1.0;
+    margin: 0px auto;
+    padding: 30px;
+}
+
+.map-sel p {
+    text-align: left;
+}
+
+.grade {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 auto;
+}
+
+.grade th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+.grade th:last-child {
+    border-radius: 0 5px 0 0;
+    border-right: 1px solid #3c6690;
+}
+
+.grade th {
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc, #7fff00);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    width: 13%;
+    padding: 10px 0;
+}
+
+.grade td {
+    text-align: center;
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    border-top: none;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    width: 13%;
+    padding: 10px 0;
+}
+
+.grade td:last-child {
+    border-right: 1px solid #a8b7c5;
+}
+
+.grade tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+
+.grade tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+}
+
+table td input {
+    width: 25%;
+}
+
+.search-btn {
+    margin-top: 20px;
+}
+
+/* top */
+.header1 {
+    background-color: #ffa500;
+    height: auto;
+}
+
+.header1 h1 {
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.header1 a {
+    display: block;
+
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+}
+
+.header1 ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: gray;
+}
+
+.header1 ul li {
+    width: 33%;
+}
+
+.t-content {
+    background-color: #66cdaa;
+    height: 120px;
+    line-height: 60px;
+}
+
+
+
+.at {
+    background-color: #f5f5dc;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.at a {
+    display: block;
+
+}
+
+#answer1,
+#answer2,
+#answer3,
+#answer4,
+#answer5,
+#answer6,
+#answer7,
+#answer8 {
+    display: none;
+    width: 60%;
+    margin: 20px auto;
+    text-align: left;
+    background-color: #add8e6;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.qa {
+    background-color: #e0ffff;
+}
+
+.qa h2 {
+    padding: 20px;
+
+}
+
+.content {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}

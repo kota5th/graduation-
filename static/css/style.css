@@ -66,13 +66,13 @@ header .h-title {
   padding-bottom: 50px;
 }
 
-ul {
+.header2 ul {
   display: flex;
   justify-content: center;
 }
 
-ul li {
-  width: 10%;
+.header2 ul li {
+  width: 20%;
   background-color: #009933;
 }
 
@@ -117,7 +117,7 @@ ul li {
 }
 
 .map-op {
-  width: 400px;
+
   line-height: 1.6;
   letter-spacing: 1.0;
   margin: 0 auto;
@@ -175,14 +175,17 @@ ul li {
 }
 
 .map-sel {
-  width: 60%;
-  line-height: 1.6;
-  letter-spacing: 1.0;
-  margin: 0px auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 20px auto;
   text-align: left;
-  padding: 30px;
 }
 
+.map-sel p {
+  width: 12%;
+  padding: 20px;
+}
 
 .grade {
   width: 100%;
@@ -240,4 +243,90 @@ table td input {
 
 .search-btn {
   margin-top: 20px;
+  margin-right: 30px;
+}
+
+/* top */
+.header1 {
+  background-color: #ffa500;
+  height: 60px;
+  position: relative;
+}
+
+.header1 h1 {
+  float: left;
+  padding-top: 15px;
+  padding-left: 5px;
+}
+
+.header1 ul {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.header1 ul li {
+  float: left;
+  display: block;
+  background-color: #00ff00;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  width: 100px;
+}
+
+.t-content {
+  background-color: #66cdaa;
+  height: 150px;
+  padding-top: 80px;
+}
+
+.t-content h2 {
+  padding-bottom: 15px;
+}
+
+.at {
+  background-color: #f5f5dc;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.at a {
+  display: block;
+
+}
+
+#answer1,
+#answer2,
+#answer3,
+#answer4,
+#answer5,
+#answer6,
+#answer7,
+#answer8 {
+  display: none;
+  width: 55%;
+  margin: 20px auto;
+  text-align: left;
+  background-color: #add8e6;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.qa {
+  background-color: #e0ffff;
+  height: auto;
+}
+
+.qa h2 {
+  padding: 20px;
+
+}
+
+.content {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
 }

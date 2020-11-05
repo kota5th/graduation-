@@ -9,7 +9,7 @@ app.secret_key = "sunaebe"
 
 @app.route("/")
 def index():
-    return "hello"
+    return render_template('top.html')
 
 # 会員登録 
 @app.route("/regist",methods=["GET"])
@@ -163,27 +163,19 @@ def grade_list():
 
 @app.route("/search", methods=["get"])
 def search_ent():
-    if user_id in session:
         return render_template("search.html")
-    else:
-        return render_template('login.html')
+
     
 
 
 # 検索
 @app.route("/search", methods=["post"])
 def search_post():
-    if user_id in session:
-        team = request.form.get("team")
-
         return redirect("/search_result")
-    else:
-        return render_template('login.html')
 
 # 検索結果
 @app.route("/search_result", methods=["post"])
 def search_entry():
-    if user_id in session:
     
         team = request.form.get("team")
         user_id = session["user_id"]
@@ -221,8 +213,7 @@ def search_entry():
         print(task)
         print(user_id)
         return render_template("grade.html", grade_list = grade_list)
-    else:
-        return render_template("login.html")
+
 
 @app.route("/friends", methods=["GET"])
 def friend_get():
