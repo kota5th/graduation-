@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/friends" method="post">
+    名前:<input type="text" size="10" maxlength="10" name="user_name">
+    投稿内容:<input type="text" size="50" maxlength="50" name="task">
+    <input type="submit" name="save" value="投稿">
+</form>
+
+{% endblock %}
